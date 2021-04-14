@@ -12,16 +12,30 @@
 				document.head.appendChild(link); // 3. 포스트 주소가 포함된 canonical을 지정함 
 			} */
 
-			function domainRedirect() { 
+			/* function domainRedirect() { 
 				//var origin = location.origin; // 4. 접속한 정보에서 도메인정보를 확보 
 				//var href = location.href; // 5. 접속한 정보에서 도메인이 포함된 포스트 주소를 확보 
 				var destination = "http://miniplay.imbc.com/WebHLS.ashx?channel=sfm&protocol=M3U8&agent=ios&nocash=0&callback=jarvis.miniInfo.loadOnAirComplete";//href.replace(origin, dest); // 6. 접속한 도메인정보를 옮겨갈 새로운 도메인 주소로 치환 
+				
 				location.href = destination; // 7. 이동 
-			} 
-
+			}  */
+            
+			var theUrl = "http://miniplay.imbc.com/WebHLS.ashx?channel=sfm&protocol=M3U8&agent=ios&nocash=0&callback=jarvis.miniInfo.loadOnAirComplete";
+			
+			function httpGet(theUrl) {
+			    var xmlHttp = new XMLHttpRequest();
+			    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			    xmlHttp.send( null );
+			    return xmlHttp.responseText;
+			}
 			// 실행 
 			//canonicalLink(); 
-			domainRedirect(); 
+			//domainRedirect();
+			var theText = httpGet(theUrl);
+			var jbBtn = document.createElement( 'div' );
+		    var jbBtnText = document.createTextNode(theText);
+		    jbBtn.appendChild( jbBtnText );
+		    document.body.appendChild( jbBtn );
 		</script> 
 	</head> 
 	<body> 
