@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="ko"> 
+<html lang="en"> 
 	<head> 
 		<meta charset="UTF-8"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -13,8 +13,8 @@
 			} */
 
 			function domainRedirect() { 
-				var origin = location.origin; // 4. 접속한 정보에서 도메인정보를 확보 
-				var href = location.href; // 5. 접속한 정보에서 도메인이 포함된 포스트 주소를 확보 
+				//var origin = location.origin; // 4. 접속한 정보에서 도메인정보를 확보 
+				//var href = location.href; // 5. 접속한 정보에서 도메인이 포함된 포스트 주소를 확보 
 				var destination = "http://serpent0.duckdns.org:8088/mbcfm.pls";//href.replace(origin, dest); // 6. 접속한 도메인정보를 옮겨갈 새로운 도메인 주소로 치환 
 				location.href = destination; // 7. 이동 
 			} 
