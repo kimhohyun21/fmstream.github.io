@@ -20,7 +20,7 @@
 				location.href = destination; // 7. 이동 
 			}  */
             
-			var theUrl = "http://miniplay.imbc.com/WebHLS.ashx?channel=sfm&protocol=M3U8&agent=ios&nocash=0&callback=jarvis.miniInfo.loadOnAirComplete";
+			/*var theUrl = "http://miniplay.imbc.com/WebHLS.ashx?channel=sfm&protocol=M3U8&agent=ios&nocash=0&callback=jarvis.miniInfo.loadOnAirComplete";
 			
 			function httpGet(theUrl) {
 			    var xmlHttp = new XMLHttpRequest();
@@ -35,10 +35,17 @@
 			var jbBtn = document.createElement( 'div' );
 		    var jbBtnText = document.createTextNode(theText);
 		    jbBtn.appendChild( jbBtnText );
-		    document.body.appendChild( jbBtn );
+		    document.body.appendChild( jbBtn );*/    	
 		</script> 
+		<link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+		<script src="https://unpkg.com/video.js/dist/video.js"></script>
+  		<script src="https://unpkg.com/videojs-flash/dist/videojs-flash.js"></script>
+		<script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 	</head> 
 	<body> 
-		forward stream 
+		<video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360"
+  data-setup='{}'>
+    		<source src="rtmp://222.122.117.201/pmfm/_definst_/mfm.stream?id=2101&si=9&secure=MmRkYTQyOTMwZTM3Y2YyMGQwOGMzZDQyMTk0NWE3ZmNiZmRmMzVlNzliYTQwNjMwMTA3ZTdmYzVkYmQ5NTBjYTRiMjcwN2UyOWQ1ODhkN2ZhZmJhZWNiOWI4OWYzMWQ3ZTZiOTI3MGI3MzY0ODAxMTRhYzY5YjhkOWU4MzhmZTlhOGY0NWVjOWY3NmRmODRlMjIyNTQ0MTRjNzZhYjZkZjUwYmE4ZmU2ZmM3ZTA1ZTJhYTk2OWE1NDg3MDA5ZGE4MTRjMTU3Y2Y0ZDRiMjVlMDcxNWVhMzZjNzRmY2JmYzc0NjdjNDg1OGUyYmMyNGMzMjgwMjU2ODJiZjM2NzdkNTI1M2FhNmIxOGY3YmJjNzc=&csu=false" type="rtmp/flv">
+  </video>
 	</body> 
 </html>
