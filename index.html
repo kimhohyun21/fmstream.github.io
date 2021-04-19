@@ -3,7 +3,7 @@
 	<head> 
 		<meta charset="UTF-8"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>forward stream</title> 
+		<title>stream</title> 
 		<!-- <link rel="canonical" href=""> <!-- 1. 표준 도메인지정 --> 
 		<script type='text/javascript'> var dest = ""; //2. 옮겨갈 새로운 도메인 지정 
 			/*function canonicalLink() { 
@@ -37,15 +37,24 @@
 		    jbBtn.appendChild( jbBtnText );
 		    document.body.appendChild( jbBtn );*/    	
 		</script> 
-		<link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-		<script src="https://unpkg.com/video.js/dist/video.js"></script>
-  		<script src="https://unpkg.com/videojs-flash/dist/videojs-flash.js"></script>
-		<script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
+		<style>
+			.video-js .vjs-time-control{display: none;} 
+			.video-js .vjs-progress-control{display: none;}
+		</style>
+		<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 	</head> 
 	<body> 
-		<video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360"
-  data-setup='{}'>
-    		<source src="rtmp://222.122.117.201/pmfm/_definst_/mfm.stream?id=2101&si=9&secure=MmRkYTQyOTMwZTM3Y2YyMGQwOGMzZDQyMTk0NWE3ZmNiZmRmMzVlNzliYTQwNjMwMTA3ZTdmYzVkYmQ5NTBjYTRiMjcwN2UyOWQ1ODhkN2ZhZmJhZWNiOWI4OWYzMWQ3ZTZiOTI3MGI3MzY0ODAxMTRhYzY5YjhkOWU4MzhmZTlhOGY0NWVjOWY3NmRmODRlMjIyNTQ0MTRjNzZhYjZkZjUwYmE4ZmU2ZmM3ZTA1ZTJhYTk2OWE1NDg3MDA5ZGE4MTRjMTU3Y2Y0ZDRiMjVlMDcxNWVhMzZjNzRmY2JmYzc0NjdjNDg1OGUyYmMyNGMzMjgwMjU2ODJiZjM2NzdkNTI1M2FhNmIxOGY3YmJjNzc=&csu=false" type="application/x-mpegURL">
-  </video>
+		<video id="voxplay" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls preload="auto" playsInline width="640" height="360" poster="http://res.cloudinary.com/cdowebcast/image/upload/v1501940982/webtv/voxstream-webtv_640x360.png">
+			<source src="rtmp://222.122.117.201/pmfm/_definst_/mfm.stream?id=2101&si=9&secure=MmRkYTQyOTMwZTM3Y2YyMGQwOGMzZDQyMTk0NWE3ZmNiZmRmMzVlNzliYTQwNjMwMTA3ZTdmYzVkYmQ5NTBjYTRiMjcwN2UyOWQ1ODhkN2ZhZmJhZWNiOWI4OWYzMWQ3ZTZiOTI3MGI3MzY0ODAxMTRhYzY5YjhkOWU4MzhmZTlhOGY0NWVjOWY3NmRmODRlMjIyNTQ0MTRjNzZhYjZkZjUwYmE4ZmU2ZmM3ZTA1ZTJhYTk2OWE1NDg3MDA5ZGE4MTRjMTU3Y2Y0ZDRiMjVlMDcxNWVhMzZjNzRmY2JmYzc0NjdjNDg1OGUyYmMyNGMzMjgwMjU2ODJiZjM2NzdkNTI1M2FhNmIxOGY3YmJjNzc=&csu=false" type="rtmp/mp4">
+		</video>
+				<script src="http://vjs.zencdn.net/5.8.0/video.js"></script>
+		<script>
+			var myPlayer=videojs('voxplay',{},function(){
+				var player=this,src=player.src;player.on("pause",function(){
+					player.one("play",function(){
+						player.src=src;player.load();player.play();});});})
+		</script>
 	</body> 
 </html>
